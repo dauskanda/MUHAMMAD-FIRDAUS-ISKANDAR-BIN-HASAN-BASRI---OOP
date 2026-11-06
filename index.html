@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JomJalan - Cuti-Cuti Malaysia Travel Portal</title>
+    <!-- External Modular CSS File -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header Section: Portal Branding and Logo -->
+    <header>
+        <div class="brand-container">
+            <img src="logo.jpg" alt="Cuti-Cuti Malaysia Logo" class="logo-img">
+            <div>
+                <h2>JomJalan Travel Portal</h2>
+                <p>Customizable A-to-Z Malaysian Holiday Planner</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tab Bar: Switch between Explorer and Dashboard -->
+    <nav>
+        <button onclick="switchTab('explorer')" id="btn-explorer" class="active">🌍 Explore & Build Custom Trip</button>
+        <button onclick="switchTab('plans')" id="btn-plans">💼 My Travel Plan (Dashboard)</button>
+    </nav>
+
+    <!-- Animated Banner Showcase for Malaysian States -->
+    <div class="combined-banner">
+        <div class="combined-track">
+            <div class="banner-item"><img src="./images/johor.jpeg" alt="Johor"><span>Johor</span></div>
+            <div class="banner-item"><img src="./images/sabah.jpg" alt="Sabah"><span>Sabah</span></div>
+            <div class="banner-item"><img src="./images/terengganu.jpg" alt="Terengganu"><span>Terengganu</span></div>
+            <div class="banner-item"><img src="./images/kelantan.jpg" alt="Kelantan"><span>Kelantan</span></div>
+            <div class="banner-item"><img src="./images/kedah.jpg" alt="Kedah"><span>Kedah</span></div>
+            <div class="banner-item"><img src="./images/melaka.jpeg" alt="Melaka"><span>Melaka</span></div>
+            <div class="banner-item"><img src="./images/perlis.jpeg" alt="Perlis"><span>Perlis</span></div>
+            <div class="banner-item"><img src="./images/nogori.jpeg" alt="Negeri Sembilan"><span>Negeri Sembilan</span></div>
+            <div class="banner-item"><img src="./images/pahang.jpg" alt="Pahang"><span>Pahang</span></div>
+            <div class="banner-item"><img src="./images/perak.jpg" alt="Perak"><span>Perak</span></div>
+            <div class="banner-item"><img src="./images/penang.jpg" alt="Pulau Pinang"><span>Pulau Pinang</span></div>
+            <div class="banner-item"><img src="./images/sarawak.jpg" alt="Sarawak"><span>Sarawak</span></div>
+            <div class="banner-item"><img src="./images/selangor.jpeg" alt="Selangor"><span>Selangor</span></div>
+            <div class="banner-item"><img src="./images/kl.jpeg" alt="Kuala Lumpur"><span>Kuala Lumpur</span></div>
+            <!-- Duplicate loop for smooth continuous banner animation -->
+            <div class="banner-item"><img src="./images/johor.jpeg" alt="Johor"><span>Johor</span></div>
+            <div class="banner-item"><img src="./images/sabah.jpg" alt="Sabah"><span>Sabah</span></div>
+            <div class="banner-item"><img src="./images/terengganu.jpg" alt="Terengganu"><span>Terengganu</span></div>
+            <div class="banner-item"><img src="./images/kelantan.jpg" alt="Kelantan"><span>Kelantan</span></div>
+            <div class="banner-item"><img src="./images/kedah.jpg" alt="Kedah"><span>Kedah</span></div>
+            <div class="banner-item"><img src="./images/melaka.jpeg" alt="Melaka"><span>Melaka</span></div>
+            <div class="banner-item"><img src="./images/perlis.jpeg" alt="Perlis"><span>Perlis</span></div>
+            <div class="banner-item"><img src="./images/nogori.jpeg" alt="Negeri Sembilan"><span>Negeri Sembilan</span></div>
+            <div class="banner-item"><img src="./images/pahang.jpg" alt="Pahang"><span>Pahang</span></div>
+            <div class="banner-item"><img src="./images/perak.jpg" alt="Perak"><span>Perak</span></div>
+            <div class="banner-item"><img src="./images/penang.jpg" alt="Pulau Pinang"><span>Pulau Pinang</span></div>
+            <div class="banner-item"><img src="./images/sarawak.jpg" alt="Sarawak"><span>Sarawak</span></div>
+            <div class="banner-item"><img src="./images/selangor.jpeg" alt="Selangor"><span>Selangor</span></div>
+            <div class="banner-item"><img src="./images/kl.jpeg" alt="Kuala Lumpur"><span>Kuala Lumpur</span></div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 1: EXPLORER & PLAN BUILDER ================= -->
+    <div id="explorer" class="container active">
+        
+        <!-- Two-Column Grid Layout for Planner and Widgets -->
+        <div class="app-grid-layout">
+            
+            <!-- LEFT COLUMN: MAIN PLANNER FORM -->
+            <div>
+                <!-- Step 1: Destination Selection & Date Input -->
+                <div class="card">
+                    <h3>🌴 Step 1: Choose State Destination</h3>
+                    <label>Select Destination State / Territory:</label>
+                    <select id="stateSelect" onchange="fetchMalaysianDestinationData()">
+                        <option value="">-- Please Select State --</option>
+                        <option value="Johor">Johor</option>
+                        <option value="Kedah">Kedah</option>
+                        <option value="Kelantan">Kelantan</option>
+                        <option value="Melaka">Melaka</option>
+                        <option value="Negeri Sembilan">Negeri Sembilan</option>
+                        <option value="Pahang">Pahang</option>
+                        <option value="Perak">Perak</option>
+                        <option value="Perlis">Perlis</option>
+                        <option value="Pulau Pinang">Pulau Pinang</option>
+                        <option value="Sabah">Sabah</option>
+                        <option value="Sarawak">Sarawak</option>
+                        <option value="Selangor">Selangor</option>
+                        <option value="Terengganu">Terengganu</option>
+                        <option value="Kuala Lumpur">Kuala Lumpur</option>
+                    </select>
+
+                    <label style="margin-top: 15px;">Select Travel Date for Weather Forecast:</label>
+                    <input type="date" id="travelDateSelect" onchange="updateWeatherForSelectedDate()">
+
+                    <div id="errorExplorer" class="error-msg"></div>
+                </div>
+
+                <!-- Step 2: Live API Weather Insights & Recommendations -->
+                <div class="card" id="resultCard" style="display:none;">
+                    <h3>📊 Step 2: Destination Insights & Recommendations</h3>
+                    <div class="result-box">
+                        <p><strong>Selected Destination:</strong> <span id="resState"></span></p>
+                        <p><strong>Current Weather Condition:</strong> <span id="resWeather"></span></p>
+                        <p><strong>Estimated Temperature:</strong> <span id="resTemp"></span></p>
+                        <p><strong>Wind Speed:</strong> <span id="resWindSpeed"></span></p>
+                        <p><strong>Max UV Index:</strong> <span id="resUVIndex"></span></p>
+                        <p><strong>Elevation:</strong> <span id="resElevation"></span></p>
+                        
+                        <hr style="border:0; border-top:1px solid #bae6fd; margin: 15px 0;">
+                        
+                        <!-- Weather-Driven Activity Suggestions Container -->
+                        <div style="margin-bottom: 15px;">
+                            <label><strong>💡 Top 5 Recommended Destination Activities During This Weather:</strong></label>
+                            <div id="weatherAdviceContainer" style="background-color: #f0f9ff; padding: 10px; border-radius: 6px; font-size: 13px; color: #0369a1; border-left: 4px solid #0284c7; margin-top: 5px; margin-bottom: 10px; font-weight: 600;"></div>
+                            <div id="destSuggestionsContainer" class="suggestion-box"></div>
+                        </div>
+
+                        <!-- Local Food Recommendations Container -->
+                        <div style="margin-top: 15px;">
+                            <label><strong>🍲 Top 5 Popular Local Food Suggestions:</strong></label>
+                            <div id="foodSuggestionsContainer" class="suggestion-box"></div>
+                        </div>
+
+                        <hr style="border:0; border-top:1px solid #bae6fd; margin: 15px 0;">
+
+                        <!-- Preset Package Selection Dropdown -->
+                        <div style="margin-top: 15px;">
+                            <label><strong>🎁 Select Recommended Travel Package (Optional Preset):</strong></label>
+                            <select id="packageSelect" onchange="applySelectedPackage()">
+                                <option value="">-- Select A Package Preset (Or Build Manual Below) --</option>
+                            </select>
+                            <p id="selectedPackageNotice" style="font-size: 12px; color: var(--secondary); font-weight: 600; margin-top: -10px;"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Custom Budget Estimator & Calculations -->
+                <div class="card">
+                    <h3>🧮 Step 3: Build & Customize Your Holiday Budget (A to Z)</h3>
+                    
+                    <label>📌 Custom Destination Name / Trip Title:</label>
+                    <input type="text" id="customDestName" placeholder="e.g. Langkawi Island Beach Getaway" oninput="calculateCustomBudget()">
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div>
+                            <label>Trip Duration (Days):</label>
+                            <input type="number" id="calcDays" placeholder="e.g. 3" min="1" oninput="calculateCustomBudget()">
+                        </div>
+                        <div>
+                            <label>Food & Activity Expenses (RM):</label>
+                            <input type="number" id="calcFood" placeholder="e.g. 200" oninput="calculateCustomBudget()">
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div>
+                            <label>🚗 Transport Mode Selection:</label>
+                            <select id="transportSelect" onchange="updateTransportCost()">
+                                <option value="">-- Select Transport Mode --</option>
+                                <option value="100">Own Car / Self-Drive (RM 100 Est. Fuel & Toll)</option>
+                                <option value="60">Express Bus / Train (RM 60 Return Ticket)</option>
+                                <option value="250">Domestic Flight (RM 250 Return Ticket)</option>
+                                <option value="custom">Custom Transport Amount</option>
+                            </select>
+                            <!-- Dynamic Custom Transport Input Field (Hidden by Default) -->
+                            <input type="number" id="customTransportInput" class="form-control" style="display:none; margin-top:8px;" placeholder="Enter custom amount (RM)" min="0" oninput="calculateCustomBudget()">
+                        </div>
+                        <div>
+                            <label>🏨 Accommodation Type (Per Night):</label>
+                            <select id="accommodationSelect" onchange="updateAccommodationCost()" style="margin-bottom: 6px;">
+                                <option value="">-- Select Accommodation Type --</option>
+                                <option value="80">Backpacker Hostel / Homestay (RM 80 / night)</option>
+                                <option value="200">3-Star Hotel / Resort (RM 200 / night)</option>
+                                <option value="450">5-Star Luxury Resort (RM 450 / night)</option>
+                                <option value="custom">Custom Accommodation Amount</option>
+                            </select>
+                            <!-- Dynamic Custom Accommodation Input Field (Hidden by Default) -->
+                            <input type="number" id="customAccommodationInput" class="form-control" style="display:none; margin-top:8px;" placeholder="Enter custom amount/night (RM)" min="0" oninput="calculateCustomBudget()">
+                            <div id="nightBreakdown" style="font-size: 12px; color: var(--secondary); font-weight: 600; margin-bottom: 16px;"></div>
+                        </div>
+                    </div>
+
+                    <label>🏷️ Apply Promo Code (Optional):</label>
+                    <div style="display: flex; gap: 10px; margin-bottom: 16px;">
+                        <input type="text" id="promoInput" placeholder="Enter code (e.g. CUTI10, JOMJALAN50, iLoveMY)" style="margin: 0;">
+                        <button class="btn btn-sm" onclick="applyPromoCode()" style="white-space: nowrap;">Apply Code</button>
+                    </div>
+                    <p id="promoMessage" style="font-size: 13px; font-weight: 600; margin-top: -10px; margin-bottom: 15px;"></p>
+
+                    <div id="errorCalc" class="error-msg"></div>
+                    
+                    <!-- Calculation Results Box -->
+                    <div class="result-box" id="calcResultBox" style="display:none;">
+                        <p><strong>Total Estimated Budget:</strong> RM <span id="resTotalCost"></span> <span id="discountTag" style="color: var(--secondary); font-size: 13px;"></span></p>
+                        <p><strong>Average Daily Cost:</strong> RM <span id="resDailyCost"></span> / day</p>
+                        <br>
+                        <button class="btn btn-warning" onclick="sendToTravelPlan()">📌 Add To My Travel Plan Dashboard</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: SIDEBAR WIDGETS -->
+            <div>
+                <!-- Active Promo Codes Widget -->
+                <div class="side-widget">
+                    <h4>🔥 Active Promo Codes</h4>
+                    <div class="promo-badge">
+                        <strong>CUTI10</strong><br>
+                        <span style="font-size: 12px; color: var(--text-light);">Enjoy 10% discount on total estimated trip budget.</span>
+                    </div>
+                    <div class="promo-badge orange">
+                        <strong>JOMJALAN50</strong><br>
+                        <span style="font-size: 12px; color: var(--text-light);">Get RM50 flat deduction on selected packages.</span>
+                    </div>
+                    <div class="promo-badge red">
+                        <strong>iLoveMY</strong><br>
+                        <span style="font-size: 12px; color: var(--text-light);">Show your love for Malaysia with 20% off!</span>
+                    </div>
+                    <div class="promo-badge purple">
+                        <strong>KPMIM25</strong><br>
+                        <span style="font-size: 12px; color: var(--text-light);">Exclusive student / staff discount of RM25 flat off.</span>
+                    </div>
+                    <div class="promo-badge blue">
+                        <strong>WEEKEND15</strong><br>
+                        <span style="font-size: 12px; color: var(--text-light);">Get 15% discount for weekend getaway trips.</span>
+                    </div>
+                </div>
+
+                <!-- Quick Travel Tips Widget -->
+                <div class="side-widget">
+                    <h4>💡 Quick Travel Tips</h4>
+                    <p style="font-size: 13px; color: var(--text-light); line-height: 1.5; margin: 0 0 10px 0;">
+                        ✨ <strong>Weather Check:</strong> Always review real-time weather forecasts via Open-Meteo before outdoor activities.
+                    </p>
+                    <p style="font-size: 13px; color: var(--text-light); line-height: 1.5; margin: 0 0 10px 0;">
+                        🏨 <strong>Preset Packages:</strong> Selecting packages auto-computes accommodation nights and costs.
+                    </p>
+                    <p style="font-size: 13px; color: var(--text-light); line-height: 1.5; margin: 0 0 10px 0;">
+                        🚗 <strong>Transport Budgeting:</strong> Include toll fees and fuel estimates when selecting self-drive transport options.
+                    </p>
+                    <p style="font-size: 13px; color: var(--text-light); line-height: 1.5; margin: 0 0 10px 0;">
+                        🎒 <strong>Off-Peak Travel:</strong> Travel during weekdays or non-school holidays to avoid long queues and crowd surges.
+                    </p>
+                    <p style="font-size: 13px; color: var(--text-light); line-height: 1.5; margin: 0;">
+                        💾 <strong>Local Persistence:</strong> All customized travel plans saved will persist securely via LocalStorage.
+                    </p>
+                </div>
+
+                <!-- Portal Info Widget -->
+                <div class="side-widget" style="background: linear-gradient(135deg, #0284c7, #06b6d4); color: white;">
+                    <h4 style="color: white; border-color: rgba(255,255,255,0.3);">Cuti-Cuti Malaysia</h4>
+                    <p style="font-size: 13.5px; margin: 0; line-height: 1.4;">
+                        Explore all 14 Malaysian states and federal territories with automated budget transparency and custom persistence.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ================= PAGE 2: DASHBOARD & CRUD PLANNER ================= -->
+    <div id="plans" class="container">
+        <!-- Summary Statistics Box -->
+        <div class="stats-box" id="statsBox">
+            <span>Total Saved Trips: <span id="statTotalTrips">0</span></span>
+            <span>Total Accumulated Budget: RM <span id="statTotalBudget">0.00</span></span>
+        </div>
+
+        <!-- Manual Add / Edit Form (CRUD Create & Update) -->
+        <div class="card">
+            <h3 id="formTitle">📝 Add / Edit Custom Travel Plan (Create / Update)</h3>
+            <input type="hidden" id="editIndex" value="-1">
+            <label>Destination / State Name:</label>
+            <input type="text" id="destInput" placeholder="e.g. Langkawi Island, Kedah">
+            <label>Travel Date:</label>
+            <input type="date" id="dateInput">
+            <label>Estimated Total Budget (RM):</label>
+            <input type="number" id="budgetInput" placeholder="e.g. 1200">
+            <div id="errorCRUD" class="error-msg"></div>
+            <br>
+            <button class="btn btn-success" onclick="savePlan()">Save Plan to Dashboard</button>
+        </div>
+
+        <!-- Saved Plans Table (CRUD Read, Update, Delete) -->
+        <div class="card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <h3 style="margin:0; border:none;">📋 My Saved Travel Plans</h3>
+                <button class="btn btn-danger btn-sm" onclick="clearAllPlans()">Clear All</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Destination</th>
+                        <th>Travel Date</th>
+                        <th>Budget (RM)</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="planTableBody">
+                    <!-- Dynamically Rendered via renderer.js -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="renderer.js"></script>
+</body>
+</html>
